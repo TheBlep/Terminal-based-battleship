@@ -69,7 +69,7 @@ def place_ships(board, num_ships):
 def get_user_guess(board_size):
     while True:
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
-        if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() and int(guess[0])<(board_size) and int(guess[1])6 6<(board_size):
+        if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() and int(guess[0])<(board_size) and int(guess[1])<(board_size):
             return int(guess[0]), int(guess[1])
         else:
             print("Invalid input. Please enter two numbers separated by a space.")
