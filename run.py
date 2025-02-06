@@ -10,14 +10,20 @@
 
 import random
 
+# Creates the board 
+
 def create_board(size):
-    
     return [['~'] * size for _ in range(size)]
+
+# Prints the board in the terminal 
 
 def print_board(board):
     for row in board:
         print(' '.join(row))
     print()
+    print(1,2,3,4,5)
+
+# Random ship placement using
 
 def place_ships(board, num_ships):
     ships = 0
@@ -26,8 +32,9 @@ def place_ships(board, num_ships):
         if board[x][y] == '~':
             board[x][y] = 'S'
             ships += 1
-            
+
 # User input and input validator
+
 def get_user_guess():
     while True:
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
@@ -36,6 +43,7 @@ def get_user_guess():
         else:
             print("Invalid input. Please enter two numbers separated by a space.")
 
+# Sets up the players and computers boards for the game
 
 def setup_game(board_size, num_ships):
     player1_board = create_board(board_size)
@@ -50,6 +58,8 @@ def setup_game(board_size, num_ships):
     print_board(player2_board)
     
     return player1_board, player2_board
+
+# The main game run function
 
 def play_game():
     board_size = 5
