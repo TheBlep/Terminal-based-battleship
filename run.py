@@ -72,7 +72,7 @@ def player_move():
         print ("Hit! May they feel our wrath...")
         enemy_grid[row][col] = 'X'
 
-# Enemy move
+# Enemy turn logic
 
 def enemy_move():
 
@@ -89,3 +89,13 @@ def enemy_move():
     else:
         print("We have taken damage. May they feel hellfire")
         player_grid[row][col] = 'X'
+
+# Main game loop
+
+while True:
+    player_move()
+    print_grid(enemy_grid)
+
+    enemy_move()
+    print_grid(player_grid)
+
