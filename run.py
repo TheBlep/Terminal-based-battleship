@@ -62,7 +62,11 @@ def setup_game(board_size, num_ships):
     
     print("The enemy has placed their ships:")
     print("---")
+    place_ships(enemy_board, num_ships)
+    # comment this out for actual gameplay
     
+    print_board(enemy_board)
+    # end of test 
     return player_board, enemy_board
 
 # The main game run function
