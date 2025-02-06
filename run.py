@@ -1,3 +1,4 @@
+
 import random
 # Welcome to another battleship game!
 # This is a simple terminal based game based on the two tutorials:
@@ -135,5 +136,3 @@ def play_game():
 
 if __name__ == "__main__":
     play_game()
-
-
