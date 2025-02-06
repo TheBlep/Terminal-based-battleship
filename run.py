@@ -78,7 +78,13 @@ def play_game():
                 player2_guesses[guess[0]][guess[1]] = 'O'
         
         turn += 1
+    
+    if player1_ships == 0:
+        print("Player 2 wins!")
+    else:
+        print("Player 1 wins!")
 
+if __name__ == "__main__":
     play_game()
 
 
