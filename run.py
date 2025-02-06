@@ -1,122 +1,138 @@
-# Its a battleship game! woo!
 
-# Setting up grid constants
-GRID_SIZE = 10
-SHIPS = {'Destroyer': 2, 'Submarine': 3, 'Battleship': 4}
-
-# Playing feilds
-player_grid = [['~'] * GRID_SIZE for _ in range(GRID_SIZE)]
-enemy_grid = [['~'] * GRID_SIZE for _ in range(GRID_SIZE)]
-
-# Placing ships randomly
 import random
-def random_row():
-    return random.randint(0,GRID_SIZE -1)
+# Welcome to another battleship game!
+# This is a simple terminal based game based on the two tutorials:
+# https://llego.dev/posts/how-code-simple-battleship-game-python/
+# and
+# https://www.pyshine.com/Make-a-battleship-game/
 
-def random_col():
-    return random.randint(0,GRID_SIZE -1)
+# BATTLESHIP
 
-def place_ships(ships, size, grid):
-    
-    # Randomly generate row and col index for bow of ship.
-    row = random_row()
-    col = random_col()
+# Creates the game board 
 
-    # Randomly chooses ship orientation
-    is_vertical = random.choice([True, False])
+def create_board(size):
+    return [['~'] * size for _ in range(size)]
 
-    if is_vertical:
-        if row + size > GRID_SIZE:
-            return False
+# Prints the board in the terminal 
 
-        for i in range(size):
-            grid[row+i][col] = ship[0]
+def print_board(board):
+    i = 1
+    print(' ',1,2,3,4,5)
+    for row in board:
+        
+        print(i,' '.join(row))
+        i = i +1
+    print()
 
-    else:
-        if col +size > GRID_SIZE:
-            return False
-            
-        for i in range(size):
-            grid[row][col+i] = ship[0]
+# Ship placement based on randomization
 
-    return True
+def place_ships(board, num_ships):
+    ships = 0
+    while ships < num_ships:
+        x, y = random.randint(0, len(board) - 1), random.randint(0, len(board) - 1)
+        if board[x][y] == '~':
+            board[x][y] = 'S'
+            ships += 1
 
-# Populate the grid
-# Repeatedly call until each ship fits
+# User input and input validator
 
-for ship, size in ships.item():
+def get_user_guess(board):
     while True:
-        placed = place_ship(ship, size, grid)
-        if placed:
-            break
+        guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
+        print()
+        if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() and int(guess[0])<(board+1) and int(guess[1])<(board+1):
+            return int(guess[0])-1, int(guess[1])-1
+        else:
+            print("Invalid input. Please enter two numbers separated by a space.")
 
-# Player turn logic
-def player_move():
+# Enemy move based on randomizaton
 
-    print("Enter row and column to obliterate without remorse")
+def get_enemy_guess(board):
+    guess = random.randint(0, board - 1), random.randint(0, board - 1)
+    return int(guess[0]), int(guess[1])
 
-    row, col = input().split()
-    row, col = int(row), int(col)
+# Sets up the players and enemy boards for the game
 
-    mark = enemy_grid[row][col]
-
-    if mark == 'X' or mark == '.':
-        print ("Stop wasting ammunition, noob")
-        return
-
-    if mark == '~':
-        print ("Miss........ You are not very good at this, try again")
-        enemy_grid[row][col] = '.'
+def setup_game(board_size, num_ships, showenemy):
+    player_board = create_board(board_size)
+    enemy_board = create_board(board_size)
     
+    print("Your ships have been placed:")
+    place_ships(player_board, num_ships)
+    print_board(player_board)
+    
+    print("The enemy has placed their ships:")
+    print("---")
+    place_ships(enemy_board, num_ships)
+
+    if showenemy == True:
+        print_board(enemy_board)
+    
+    return player_board, enemy_board
+
+# The main game run function
+
+def play_game():
+    print("Welcome to Battleship! A game of pure luck... Good luck")
+    print("'~' are unknown playing fields, 'O' are guessed and missed field and 'X' are guessed and hit fields!")
+
+    # Question if you wish to see the location of enemy ships or not (Used for testing)
+    answer = False
+    showenemy = False
+    while answer == False:
+        show = input("Do you want to see the enemy ship locations? [Typically for testing] y/n")
+        if show == "y":
+            showenemy = True
+            break
+        elif show == "n":
+            break
+        else:
+            answer = False
+
+    board_size = 5
+    num_ships = 3
+    player_board, enemy_board = setup_game(board_size, num_ships, showenemy)
+    player_guesses = create_board(board_size)
+    enemy_guesses = create_board(board_size)
+    
+    player_ships = num_ships
+    enemy_ships = num_ships
+    turn = 0
+    
+    while player_ships > 0 and enemy_ships > 0:
+        if turn % 2 == 0:
+            print("Your turn")
+            print_board(player_guesses)
+            guess = get_user_guess(board_size)
+            if enemy_board[guess[0]][guess[1]] == 'S':
+                print("You hit!")
+                player_guesses[guess[0]][guess[1]] = 'X'
+                enemy_board[guess[0]][guess[1]] = 'X'
+                enemy_ships -= 1
+            else:
+                print("You missed.")
+                print("---")
+                player_guesses[guess[0]][guess[1]] = 'O'
+        else:
+            print("Enemys turn")
+            print_board(enemy_guesses)
+            guess = get_enemy_guess(board_size)
+            if player_board[guess[0]][guess[1]] == 'S':
+                print("Enemy has hit you!")
+                enemy_guesses[guess[0]][guess[1]] = 'X'
+                player_board[guess[0]][guess[1]] = 'X'
+                player_ships -= 1
+            else:
+                print("Enemy Missed!")
+                print("---")
+                enemy_guesses[guess[0]][guess[1]] = 'O'
+        
+        turn += 1
+    
+    if player_ships == 0:
+        print("Enemy wins!")
     else:
-        print ("Hit! May they feel our wrath...")
-        enemy_grid[row][col] = 'X'
+        print("You win!")
 
-# Enemy turn logic
-
-def enemy_move():
-
-    row = random_row()
-    col = random_col()
-
-    mark = player_grid[row][col]
-
-    if mark == 'X' or mark == '.':
-        return
-    if mark == '~':
-        print ("We have once again evaded their inferior guns")
-        player_grid[row][col] = '.'
-    else:
-        print("We have taken damage. May they feel hellfire")
-        player_grid[row][col] = 'X'
-
-# Main game loop
-
-while True:
-    player_move()
-    print_grid(enemy_grid)
-
-    enemy_move()
-    print_grid(player_grid)
-
-# Checking for a win
-
-if all_ships_sunk(enemy_grid):
-    print("We have successfully commited genocide")
-    break
-
-# Checking if valid player input
-
-try:
-    row, col = input("Enter row and colunm: ").split()
-    row, col = int(row), int(col)
-except ValueError:
-    print("Please enter valid coordinates, Commander")
-    continue
-
-# Exiting game
-
-action = input("Your move: ")
-if action.lower() == 'quit':
-    print("You have retired [Quit the game]")
-    break
+if __name__ == "__main__":
+    play_game()
