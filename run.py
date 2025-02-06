@@ -60,7 +60,7 @@ def player_move():
 
     mark = enemy_grid[row][col]
 
-    if mark == 'X' or mark == '.';
+    if mark == 'X' or mark == '.':
         print ("Stop wasting ammunition, noob")
         return
 
