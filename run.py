@@ -76,7 +76,7 @@ def get_user_guess(board_size):
 
 # Random enemy move
 
-def enemy_move():
+def get_enemy_guess():
     guess = random.randint(0, len(board) - 1), random.randint(0, len(board) - 1)
     return int(guess[0]), int(guess[1])
 
@@ -99,61 +99,61 @@ def enemy_move():
 
 def setup_game(board_size, num_ships):
     player1_board = create_board(board_size)
-    player2_board = create_board(board_size)
+    enemy_board = create_board(board_size)
     
     print("Player 1, place your ships:")
     place_ships(player1_board, num_ships)
     print_board(player1_board)
     
-    print("Player 2, place your ships:")
-    place_ships(player2_board, num_ships)
-    print_board(player2_board)
+    print("Enemy, place your ships:")
+    place_ships(enemy_board, num_ships)
+    print_board(enemy_board)
     
-    return player1_board, player2_board
+    return player1_board, enemy_board
 
 # The main game run function
 
 def play_game():
     board_size = 5
     num_ships = 3
-    player1_board, player2_board = setup_game(board_size, num_ships)
+    player1_board, enemy_board = setup_game(board_size, num_ships)
     player1_guesses = create_board(board_size)
-    player2_guesses = create_board(board_size)
+    enemy_guesses = create_board(board_size)
     
     player1_ships = num_ships
-    player2_ships = num_ships
+    enemy_ships = num_ships
     turn = 0
     
-    while player1_ships > 0 and player2_ships > 0:
+    while player1_ships > 0 and enemy_ships > 0:
         if turn % 2 == 0:
             print("Player 1's turn")
             print_board(player1_guesses)
             guess = get_user_guess(board_size)
-            if player2_board[guess[0]][guess[1]] == 'S':
+            if enemy_board[guess[0]][guess[1]] == 'S':
                 print("Hit!")
                 player1_guesses[guess[0]][guess[1]] = 'X'
-                player2_board[guess[0]][guess[1]] = 'X'
-                player2_ships -= 1
+                enemy_board[guess[0]][guess[1]] = 'X'
+                enemy_ships -= 1
             else:
                 print("Miss.")
                 player1_guesses[guess[0]][guess[1]] = 'O'
         else:
-            print("Player 2's turn")
-            print_board(player2_guesses)
-            guess = get_user_guess(board_size)
+            print("Enemys turn")
+            print_board(enemy_guesses)
+            guess = get_enemy_guess(board_size)
             if player1_board[guess[0]][guess[1]] == 'S':
                 print("Hit!")
-                player2_guesses[guess[0]][guess[1]] = 'X'
+                enemy_guesses[guess[0]][guess[1]] = 'X'
                 player1_board[guess[0]][guess[1]] = 'X'
                 player1_ships -= 1
             else:
                 print("Miss.")
-                player2_guesses[guess[0]][guess[1]] = 'O'
+                enemy_guesses[guess[0]][guess[1]] = 'O'
         
         turn += 1
     
     if player1_ships == 0:
-        print("Player 2 wins!")
+        print("Enemy wins!")
     else:
         print("Player 1 wins!")
 
