@@ -50,3 +50,25 @@ for ship, size in ships.item():
         if placed:
             break
 
+# Player turn logic
+def player_move():
+
+    print("Enter row and column to obliterate without remorse")
+
+    row, col = input().split()
+    row, col = int(row), int(col)
+
+    mark = enemy_grid[row][col]
+
+    if mark == 'X' or mark == '.';
+        print ("Stop wasting ammunition, noob")
+        return
+
+    if mark == '~':
+        print ("Miss........ You are not very good at this, try again")
+        enemy_grid[row][col] = '.'
+    
+    else:
+        print ("Hit! May they feel our wrath...")
+        enemy_grid[row][col] = 'X'
+
