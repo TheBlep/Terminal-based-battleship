@@ -72,3 +72,20 @@ def player_move():
         print ("Hit! May they feel our wrath...")
         enemy_grid[row][col] = 'X'
 
+# Enemy move
+
+def enemy_move():
+
+    row = random_row()
+    col = random_col()
+
+    mark = player_grid[row][col]
+
+    if mark == 'X' or mark == '.':
+        return
+    if mark == '~':
+        print ("We have once again evaded their inferior guns")
+        player_grid[row][col] = '.'
+    else:
+        print("We have taken damage. May they feel hellfire")
+        player_grid[row][col] = 'X'
