@@ -52,7 +52,7 @@ def get_enemy_guess(board):
 
 # Sets up the players and enemy boards for the game
 
-def setup_game(board_size, num_ships):
+def setup_game(board_size, num_ships, showenemy):
     player_board = create_board(board_size)
     enemy_board = create_board(board_size)
     
@@ -63,18 +63,34 @@ def setup_game(board_size, num_ships):
     print("The enemy has placed their ships:")
     print("---")
     place_ships(enemy_board, num_ships)
-    # comment this out for actual gameplay
+
+    if showenemy == True:
+        print_board(enemy_board)
     
-    print_board(enemy_board)
-    # end of test 
     return player_board, enemy_board
 
 # The main game run function
 
 def play_game():
+    print("Welcome to Battleship! A game of pure luck... Good luck")
+    print("'~' are unknown playing fields, 'O' are guessed and missed field and 'X' are guessed and hit fields!")
+
+    # Question if you wish to see the location of enemy ships or not (Used for testing)
+    answer = False
+    showenemy = False
+    while answer == False:
+        show = input("Do you want to see the enemy ship locations? [Typically for testing] y/n")
+        if show == "y":
+            showenemy = True
+            break
+        elif show == "n":
+            break
+        else:
+            answer = False
+
     board_size = 5
     num_ships = 3
-    player_board, enemy_board = setup_game(board_size, num_ships)
+    player_board, enemy_board = setup_game(board_size, num_ships, showenemy)
     player_guesses = create_board(board_size)
     enemy_guesses = create_board(board_size)
     
