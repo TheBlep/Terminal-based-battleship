@@ -99,3 +99,10 @@ while True:
     enemy_move()
     print_grid(player_grid)
 
+# Checking for a win
+
+if all_ships_sunk(enemy_grid):
+    print("We have successfully commited genocide")
+    break
+
+
