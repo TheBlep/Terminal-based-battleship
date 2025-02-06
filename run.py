@@ -1,12 +1,8 @@
 # Todos:
-# enable ai
-# bigger boards
-# coordinates around boards
-# different ships
-
-# Notes:
-# stick with random placement
-
+# [1] enable ai 
+# [x] bigger boards
+# [0] coordinates around boards
+# [0] different ships
 
 import random
 
@@ -102,7 +98,7 @@ def setup_game(board_size, num_ships):
     player1_board = create_board(board_size)
     enemy_board = create_board(board_size)
     
-    print("Player 1, place your ships:")
+    print("The player's ships have been placed:")
     place_ships(player1_board, num_ships)
     print_board(player1_board)
     
