@@ -5,6 +5,7 @@
 # [0] different ships
 
 import random
+import numpy
 
 # The types of ships
 
@@ -18,10 +19,12 @@ def create_board(size):
 # Prints the board in the terminal 
 
 def print_board(board):
+    i = 1
+    print(' ',1,2,3,4,5)
     for row in board:
-        print(' '.join(row))
-    
-    print(1,2,3,4,5)
+        
+        print(i,' '.join(row))
+        i = i +1
     print()
 
 # Random ship placement using
@@ -77,21 +80,6 @@ def get_enemy_guess(board):
     guess = random.randint(0, board - 1), random.randint(0, board - 1)
     return int(guess[0]), int(guess[1])
 
-#   row = random_row()
-#   col = random_col()
-
-#   mark = player_grid[row][col]
-
-#   if mark == 'X' or mark == '-':
-#     return
-
-#   if mark == '.':
-#     print("Enemy missed!")
-#     player_grid[row][col] = '-'
-#   else:
-#     print("Enemy hit!")
-#     player_grid[row][col] = 'X'
-
 # Sets up the players and computers boards for the game
 
 def setup_game(board_size, num_ships):
@@ -103,7 +91,6 @@ def setup_game(board_size, num_ships):
     print_board(player1_board)
     
     print("The enemy has placed their ships:")
-    
     
     return player1_board, enemy_board
 
