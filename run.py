@@ -24,8 +24,9 @@ def create_board(size):
 def print_board(board):
     for row in board:
         print(' '.join(row))
-    print()
+    
     print(1,2,3,4,5)
+    print()
 
 # Random ship placement using
 
@@ -105,9 +106,8 @@ def setup_game(board_size, num_ships):
     place_ships(player1_board, num_ships)
     print_board(player1_board)
     
-    print("Enemy, place your ships:")
-    place_ships(enemy_board, num_ships)
-    print_board(enemy_board)
+    print("The enemy has placed their ships:")
+    
     
     return player1_board, enemy_board
 
@@ -126,28 +126,30 @@ def play_game():
     
     while player1_ships > 0 and enemy_ships > 0:
         if turn % 2 == 0:
-            print("Player 1's turn")
+            print("Players turn")
             print_board(player1_guesses)
             guess = get_user_guess(board_size)
             if enemy_board[guess[0]][guess[1]] == 'S':
-                print("Hit!")
+                print("You hit!")
                 player1_guesses[guess[0]][guess[1]] = 'X'
                 enemy_board[guess[0]][guess[1]] = 'X'
                 enemy_ships -= 1
             else:
-                print("Miss.")
+                print("You missed.")
+                print("---")
                 player1_guesses[guess[0]][guess[1]] = 'O'
         else:
             print("Enemys turn")
             print_board(enemy_guesses)
             guess = get_enemy_guess(board_size)
             if player1_board[guess[0]][guess[1]] == 'S':
-                print("Hit!")
+                print("Enemy has hit you!")
                 enemy_guesses[guess[0]][guess[1]] = 'X'
                 player1_board[guess[0]][guess[1]] = 'X'
                 player1_ships -= 1
             else:
-                print("Miss.")
+                print("Enemy Missed!")
+                print("---")
                 enemy_guesses[guess[0]][guess[1]] = 'O'
         
         turn += 1
