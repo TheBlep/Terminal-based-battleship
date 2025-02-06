@@ -1,7 +1,17 @@
+# Todos:
+# enable ai
+# bigger boards
+# coordinates around boards
+# different ships
+
+# Notes:
+# stick with random placement
+
 
 import random
 
 def create_board(size):
+    
     return [['~'] * size for _ in range(size)]
 
 def print_board(board):
@@ -16,7 +26,8 @@ def place_ships(board, num_ships):
         if board[x][y] == '~':
             board[x][y] = 'S'
             ships += 1
-
+            
+# User input and input validator
 def get_user_guess():
     while True:
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
@@ -26,7 +37,7 @@ def get_user_guess():
             print("Invalid input. Please enter two numbers separated by a space.")
 
 
-def setup_game(board_size=5, num_ships=3):
+def setup_game(board_size, num_ships):
     player1_board = create_board(board_size)
     player2_board = create_board(board_size)
     
