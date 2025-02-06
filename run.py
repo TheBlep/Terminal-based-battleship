@@ -66,18 +66,18 @@ def place_ships(board, num_ships):
 
 # User input and input validator
 
-def get_user_guess(board_size):
+def get_user_guess(board):
     while True:
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
-        if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() and int(guess[0])<(board_size) and int(guess[1])<(board_size):
-            return int(guess[0]), int(guess[1])
+        if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() and int(guess[0])<(board) and int(guess[1])<(board):
+            return int(guess[0])-1, int(guess[1])-1
         else:
             print("Invalid input. Please enter two numbers separated by a space.")
 
 # Random enemy move
 
-def get_enemy_guess():
-    guess = random.randint(0, len(board) - 1), random.randint(0, len(board) - 1)
+def get_enemy_guess(board):
+    guess = random.randint(0, board - 1), random.randint(0, board - 1)
     return int(guess[0]), int(guess[1])
 
 #   row = random_row()
