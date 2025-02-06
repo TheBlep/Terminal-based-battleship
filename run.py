@@ -41,3 +41,12 @@ def place_ships(ships, size, grid):
 
     return True
 
+# Populate the grid
+# Repeatedly call until each ship fits
+
+for ship, size in ships.item():
+    while True:
+        placed = place_ship(ship, size, grid)
+        if placed:
+            break
+
