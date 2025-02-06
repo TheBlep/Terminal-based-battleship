@@ -114,3 +114,9 @@ except ValueError:
     print("Please enter valid coordinates, Commander")
     continue
 
+# Exiting game
+
+action = input("Your move: ")
+if action.lower() == 'quit':
+    print("You have retired [Quit the game]")
+    break
