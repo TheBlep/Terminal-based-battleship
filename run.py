@@ -105,4 +105,12 @@ if all_ships_sunk(enemy_grid):
     print("We have successfully commited genocide")
     break
 
+# Checking if valid player input
+
+try:
+    row, col = input("Enter row and colunm: ").split()
+    row, col = int(row), int(col)
+except ValueError:
+    print("Please enter valid coordinates, Commander")
+    continue
 
