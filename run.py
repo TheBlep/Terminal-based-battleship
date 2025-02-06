@@ -16,4 +16,28 @@ def random_row():
 def random_col():
     return random.randint(0,GRID_SIZE -1)
 
-#def place_ships(ships, size, grid)
+def place_ships(ships, size, grid):
+    
+    # Randomly generate row and col index for bow of ship.
+    row = random_row()
+    col = random_col()
+
+    # Randomly chooses ship orientation
+    is_vertical = random.choice([True, False])
+
+    if is_vertical:
+        if row + size > GRID_SIZE:
+            return False
+
+        for i in range(size):
+            grid[row+i][col] = ship[0]
+
+    else:
+        if col +size > GRID_SIZE:
+            return False
+            
+        for i in range(size):
+            grid[row][col+i] = ship[0]
+
+    return True
+
