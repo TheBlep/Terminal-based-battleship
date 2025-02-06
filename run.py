@@ -1,7 +1,7 @@
 # Todos:
 # [1] enable ai 
 # [x] bigger boards
-# [0] coordinates around boards
+# [1] coordinates around boards
 # [0] different ships
 
 import random
@@ -69,6 +69,7 @@ def place_ships(board, num_ships):
 def get_user_guess(board):
     while True:
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
+        print()
         if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() and int(guess[0])<(board) and int(guess[1])<(board):
             return int(guess[0])-1, int(guess[1])-1
         else:
@@ -86,11 +87,12 @@ def setup_game(board_size, num_ships):
     player1_board = create_board(board_size)
     enemy_board = create_board(board_size)
     
-    print("The player's ships have been placed:")
+    print("Your ships have been placed:")
     place_ships(player1_board, num_ships)
     print_board(player1_board)
     
     print("The enemy has placed their ships:")
+    print("---")
     
     return player1_board, enemy_board
 
@@ -109,7 +111,7 @@ def play_game():
     
     while player1_ships > 0 and enemy_ships > 0:
         if turn % 2 == 0:
-            print("Players turn")
+            print("Your turn")
             print_board(player1_guesses)
             guess = get_user_guess(board_size)
             if enemy_board[guess[0]][guess[1]] == 'S':
@@ -140,7 +142,7 @@ def play_game():
     if player1_ships == 0:
         print("Enemy wins!")
     else:
-        print("Player 1 wins!")
+        print("You win!")
 
 if __name__ == "__main__":
     play_game()
