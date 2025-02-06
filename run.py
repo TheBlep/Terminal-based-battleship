@@ -31,7 +31,7 @@ def print_board(board):
 def place_ships(board, num_ships):
     ships = 0
     while ships < num_ships:
-        x, y = random.randint(0, len(board) - 1),
+        x, y = random.randint(0, len(board) - 1), \
         random.randint(0, len(board) - 1)
         if board[x][y] == '~':
             board[x][y] = 'S'
