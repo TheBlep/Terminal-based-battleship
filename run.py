@@ -40,5 +40,45 @@ def setup_game(board_size=5, num_ships=3):
     
     return player1_board, player2_board
 
+def play_game():
+    board_size = 5
+    num_ships = 3
+    player1_board, player2_board = setup_game(board_size, num_ships)
+    player1_guesses = create_board(board_size)
+    player2_guesses = create_board(board_size)
+    
+    player1_ships = num_ships
+    player2_ships = num_ships
+    turn = 0
+    
+    while player1_ships > 0 and player2_ships > 0:
+        if turn % 2 == 0:
+            print("Player 1's turn")
+            print_board(player1_guesses)
+            guess = get_user_guess()
+            if player2_board[guess[0]][guess[1]] == 'S':
+                print("Hit!")
+                player1_guesses[guess[0]][guess[1]] = 'X'
+                player2_board[guess[0]][guess[1]] = 'X'
+                player2_ships -= 1
+            else:
+                print("Miss.")
+                player1_guesses[guess[0]][guess[1]] = 'O'
+        else:
+            print("Player 2's turn")
+            print_board(player2_guesses)
+            guess = get_user_guess()
+            if player1_board[guess[0]][guess[1]] == 'S':
+                print("Hit!")
+                player2_guesses[guess[0]][guess[1]] = 'X'
+                player1_board[guess[0]][guess[1]] = 'X'
+                player1_ships -= 1
+            else:
+                print("Miss.")
+                player2_guesses[guess[0]][guess[1]] = 'O'
+        
+        turn += 1
+
+    play_game()
 
 
