@@ -63,12 +63,16 @@ The data model for Battleship includes:
     - **Solution:** Added correct syntax "\" to lines to fix the problem.
 
 #### Remaining Bugs
-- **Bug:** Player and computer are able to guess a single tile more than once, waisting a turn.  
+- **Bug:** Player and computer are able to guess a single tile more than once, 
+    waisting a turn.  
     - **Status:** This could be solved with a tracker function, preventing duplicate inputs for a single game.
 
 ### Validator
 The code has been validated using the following tools:
 - **PEP8:** Ensuring Python code style guidelines are met.
+
+![PEP8 verification](assets/images/ci-val.png)
+
 - **Heroku Validator:** Ensuring the application is correctly deployed and running on Heroku.
 
 ## Deployment
@@ -79,7 +83,8 @@ The game was deployed using the Heroku app hosting service:
     - Set the buildpacks (under settings) to 'Python' and 'NodeJS'. Where Python is **above** NodeJS
     - Link the Heroku app to the repository
     - Click on **Deploy**
-
+- Active deployment
+    - Another option is to use the active Heroku deplyoment [here](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
 
 ## Credits
 - **Developer:** TheBlep
