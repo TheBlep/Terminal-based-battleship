@@ -32,7 +32,7 @@ def place_ships(board, num_ships):
     ships = 0
     while ships < num_ships:
         x, y = random.randint(0, len(board) - 1), \
-        random.randint(0, len(board) - 1)
+            random.randint(0, len(board) - 1)
         if board[x][y] == '~':
             board[x][y] = 'S'
             ships += 1
@@ -45,7 +45,7 @@ def get_user_guess(board):
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
         print()
         if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() \
-        and int(guess[0]) < (board+1) and int(guess[1]) < (board+1):
+                and int(guess[0]) < (board+1) and int(guess[1]) < (board+1):
             return int(guess[0])-1, int(guess[1])-1
         else:
             print("Invalid input")
@@ -148,4 +148,3 @@ def play_game():
 
 if __name__ == "__main__":
     play_game()
-
