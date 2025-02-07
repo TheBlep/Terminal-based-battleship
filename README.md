@@ -63,14 +63,19 @@ The code has been validated using the following tools:
 - **PEP8:** Ensuring Python code style guidelines are met.
 - **Heroku Validator:** Ensuring the application is correctly deployed and running on Heroku.
 
-## Development
-The development process included:
-1. **Planning:** Outlining the game logic and features.
-2. **Implementation:** Coding the game in Python.
-3. **Testing:** Identifying and fixing bugs.
-4. **Deployment:** Hosting the game on Heroku.
+## Deployment
+The game was deployed using the Heroku app hosting service:
+- Steps for deployment
+    - Fork or clone the repository
+    - Create a new Heroku app
+    - Set the buildpacks (under settings) to 'Python' and 'NodeJS'. Where Python is **above** NodeJS
+    - Link the Heroku app to the repository
+    - Click on **Deploy**
+
 
 ## Credits
 - **Developer:** TheBlep
-- **Inspiration:** Classic Battleship game
-- **Resources:** Python documentation, Heroku deployment guides
+- **Inspiration:** The classic Battleship game
+- **Resources:** Python documentation, Heroku deployment guides, W3C, and two tutorials:
+    https://llego.dev/posts/how-code-simple-battleship-game-python/ and \
+    https://www.pyshine.com/Make-a-battleship-game/
