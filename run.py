@@ -31,7 +31,7 @@ def print_board(board):
 def place_ships(board, num_ships):
     ships = 0
     while ships < num_ships:
-        x, y = random.randint(0, len(board) - 1),
+        x, y = random.randint(0, len(board) - 1), \
         random.randint(0, len(board) - 1)
         if board[x][y] == '~':
             board[x][y] = 'S'
@@ -44,7 +44,7 @@ def get_user_guess(board):
     while True:
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
         print()
-        if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit()
+        if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() \
         and int(guess[0]) < (board+1) and int(guess[1]) < (board+1):
             return int(guess[0])-1, int(guess[1])-1
         else:
@@ -73,7 +73,7 @@ def setup_game(board_size, num_ships, showenemy):
     print("---")
     place_ships(enemy_board, num_ships)
 
-    if showenemy = True:
+    if showenemy == True:
         print_board(enemy_board)
 
     return player_board, enemy_board
@@ -90,7 +90,7 @@ def play_game():
     # (Used for testing)
     answer = False
     showenemy = False
-    while answer = False:
+    while answer == False:
         show = input("See the enemy ship locations?[Used for testing] y/n")
         if show == "y":
             showenemy = True
