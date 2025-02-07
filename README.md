@@ -1,32 +1,76 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battleship
+![Game Mockup](<screenshot>)
 
-Welcome,
+## Table of Contents
+1. [How to Play](#how-to-play)
+2. [Features](#features)
+   - [Existing Features](#existing-features)
+   - [Future Features](#future-features)
+3. [Data Model](#data-model)
+4. [Testing](#testing)
+   - [Bugs](#bugs)
+     - [Solved Bugs](#solved-bugs)
+     - [Remaining Bugs](#remaining-bugs)
+   - [Validator](#validator)
+5. [Development](#development)
+6. [Credits](#credits)
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **May 14, 2024**
+## How to Play
+Battleship is a classic strategy game where you try to sink your opponent's fleet of ships before they sink yours. Each player takes turns guessing the coordinates of the opponent's ships. The first player to sink all of the opponent's ships wins.
 
-## Reminders
+To play the game:
+1. Start the game by running the `run.py` file.
+2. Enter the coordinates for your guesses when prompted.
+3. The game will indicate whether you have hit or missed a ship.
+4. Continue guessing until all ships are sunk.
 
-- Your code must be placed in the `run.py` file
-- Your dependencies must be placed in the `requirements.txt` file
-- Do not edit any of the other files or your code may not deploy properly
+## Features
 
-## Creating the Heroku app
+### Existing Features
+- **Interactive Command Line Interface:** The game is played through the terminal.
+  ![CLI Screenshot](<screenshot>)
+- **Random Ship Placement:** Ships are placed randomly on the board at the start of each game.
+- **Turn-based Gameplay:** Players take turns to guess the coordinates of enemy ships.
+- **Victory Message:** The game announces the winner when all ships of one player are sunk.
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Future Features
+- **Multiplayer Mode:** Allowing two players to play remotely.
+- **Enhanced AI:** Improving the computer's strategy for choosing guesses.
+- **Graphical Interface:** Adding a GUI for a more engaging experience.
 
-1. `heroku/python`
-2. `heroku/nodejs`
+## Data Model
+The data model for Battleship includes:
+- **Grid:** A 10x10 grid representing the game board.
+- **Ships:** Different types of ships with varying lengths.
+- **Guesses:** Coordinates where the player has guessed.
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+## Testing
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+### Bugs
 
-Connect your GitHub repository and deploy as normal.
+#### Solved Bugs
+- **Bug 1:** Incorrect ship placement causing overlap.
+  - **Solution:** Implemented a check to ensure ships do not overlap.
+- **Bug 2:** Game crash when inputting invalid coordinates.
+  - **Solution:** Added input validation to handle incorrect inputs.
 
-## Constraints
+#### Remaining Bugs
+- **Bug 3:** Occasionally, the game does not recognize a hit.
+  - **Status:** Under investigation.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+### Validator
+The code has been validated using the following tools:
+- **PEP8:** Ensuring Python code style guidelines are met.
+- **Heroku Validator:** Ensuring the application is correctly deployed and running on Heroku.
 
----
+## Development
+The development process included:
+1. **Planning:** Outlining the game logic and features.
+2. **Implementation:** Coding the game in Python.
+3. **Testing:** Identifying and fixing bugs.
+4. **Deployment:** Hosting the game on Heroku.
 
-Happy coding!
+## Credits
+- **Developer:** TheBlep
+- **Inspiration:** Classic Battleship game
+- **Resources:** Python documentation, Heroku deployment guides
