@@ -78,13 +78,18 @@ The code has been validated using the following tools:
 ## Deployment
 The game was deployed using the Heroku app hosting service:
 - Steps for deployment
-    - Fork or clone the repository
+    - Fork or clone the [respository](https://github.com/TheBlep/Terminal-based-battleship)
     - Create a new Heroku app
     - Set the buildpacks (under settings) to 'Python' and 'NodeJS'. Where Python is **above** NodeJS
     - Link the Heroku app to the repository
     - Click on **Deploy**
 - Active deployment
     - Another option is to use the active Heroku deplyoment [here](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
+- Local deployment
+    - Fork or clone the [respository](https://github.com/TheBlep/Terminal-based-battleship)
+    - Open open the file in your favorate IDE
+    - Run the run.py in a python terminal
+    - Enjoy!
 
 ## Credits
 - **Developer:** TheBlep
