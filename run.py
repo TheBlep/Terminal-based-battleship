@@ -15,6 +15,7 @@ import sys
 
 # BATTLESHIP!
 
+
 def create_board(size):
     """Creates the game board"""
     return [['~'] * size for _ in range(size)]
@@ -39,13 +40,14 @@ def place_ships(board, num_ships):
             random.randint(0, len(board) - 1)
         if board[x][y] == '~':
             board[x][y] = 'S'
-            ships += 1 
+            ships += 1
 
 
 def get_user_guess(board):
     """User input and input validator"""
     while True:
-        guess = input("Enter your guess (row and column, e.g., 2 3 or 'q' to quite): ").split()
+        guess = input(\
+            "Enter your guess (row and column, e.g., 2 3 or 'q' to quite): ").split()
         print()
         if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() \
                 and int(guess[0]) < (board+1) and int(guess[1]) < (board+1) \
@@ -58,7 +60,8 @@ def get_user_guess(board):
             break
         else:
             print(Fore.RED + "Invalid input")
-            print(Style.RESET_ALL + "Please enter two numbers separated by a space.")
+            print(Style.RESET_ALL + \
+                "Please enter two numbers separated by a space.")
 
 
 def get_enemy_guess(board):
@@ -91,28 +94,29 @@ def play_game():
     os.system('cls' if os.name == 'nt' else 'clear')
 
     print("Welcome to Battleship! A game of pure luck... Good luck!")
-    print("Your goal is to sink all of your opponent's fleet of ships") 
+    print("Your goal is to sink all of your opponent's fleet of ships")
     print("before they sink yours!")
-    print("Each player takes turns guessing the coordinates of the opponent's ships.")
-    print("in this version, you are playing against a computer that will do its")
-    print("very best to destroy you and it is up to you to destroy it first!")
+    print("Each player takes turns guessing the coordinates of the")
+    print("opponent's ships. in this version, you are playing against a")
+    print("computer that will do its very best to destroy you and it is")
+    print("up to you to destroy it first!")
     print("The first player to sink all of the opponent's ships wins.")
     print("'~' are unknown playing fields, 'O' are guessed and missed field")
     print("and 'X' are guessed and hit fields!")
-    
-
 
     # Question if you wish to see the location of enemy ships or not
     # (Used for testing)
     answer = False
     showenemy = False
     while answer is False:
-        show = input(Fore.YELLOW + "Would you like to see the enemy ship locations? \
-            [Used for testing] y/n")
+        show = input(Fore.YELLOW + \
+            "Would you like to see the enemy ship locations? \
+                [Used for testing] y/n")
         if show is "y":
             os.system('cls' if os.name == 'nt' else 'clear')
             showenemy = True
-            print(Fore.RED + "Please note the enemy ship placements before proceeding!")
+            print(Fore.RED + "Please note the enemy ship placements \
+            before proceeding!")
             break
         elif show == "n":
             break
@@ -132,7 +136,7 @@ def play_game():
     turn = 0
 
     # Request, verify, print and save turn input
-    
+
     while player_ships > 0 and enemy_ships > 0:
         if turn % 2 is 0:
 
@@ -176,22 +180,41 @@ def play_game():
         print(Fore-RED + "Enemy wins!")
     else:
         print(Fore.GREEN + "Congrats! you have sank all the enemy ships!")
-    
+
+
+# """Main game loop"""
+# if __name__ == "__main__":
+#     while True:  # Re-run program
+#         play_game()
+
+#     while True:  # Validate user input
+#         answer = input(Style.RESET_ALL + 'Would you like to play again?\
+#         (y/n): ')
+#         if answer in ('y', 'n'):
+#             break
+#         print(Fore.RED + "invalid input.")
+
+#     if answer == 'y':
+#         continue
+#     else:
+#         print(Style.RESET_ALL + "Goodbye")
+#         print(chr(27) + "[2J")
+#         break
 
 """Main game loop"""
 if __name__ == "__main__":
-   while True:  # Re-run program
-    play_game()
+    while True:  # Re-run program
+        play_game()
 
-    while True:  # Validate user input
-        answer = input(Style.RESET_ALL + 'Would you like to play again? (y/n): ')
-        if answer in ('y', 'n'):
+        while True:  # Validate user input
+            answer = input(Style.RESET_ALL + 'Would you like to play again? (y/n): ')
+            if answer in ('y', 'n'):
+                break
+            print(Fore.RED + "invalid input.")
+
+        if answer == 'y':
+            continue
+        else:
+            print(Style.RESET_ALL + "Goodbye")
+            print(chr(27) + "[2J")
             break
-        print(Fore.RED + "invalid input.")
-
-    if answer == 'y':
-        continue
-    else:
-        print(Style.RESET_ALL + "Goodbye")
-        print(chr(27) + "[2J")
-        break
