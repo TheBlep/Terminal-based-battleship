@@ -57,6 +57,7 @@ def get_user_guess(board):
             os.system('cls' if os.name == 'nt' else 'clear')
             return int(guess[0])-1, int(guess[1])-1
         elif len(guess) == 1 and guess[0] == "q":
+            os.system('cls' if os.name == 'nt' else 'clear')
             sys.exit()
             break
         else:
@@ -218,5 +219,6 @@ if __name__ == "__main__":
             continue
         else:
             print(Style.RESET_ALL + "Goodbye")
+            os.system('cls' if os.name == 'nt' else 'clear')
             print(chr(27) + "[2J")
             break
