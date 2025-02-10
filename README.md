@@ -33,13 +33,10 @@ To play the game:
 - **Interactive Command Line Interface:** The game is played through the terminal; giving a welcome message to the player, telling them about the game, how it is played, what the different symbols on the board are and asking if they wish to see enemy ship placement for testing of the game.
  ![Terminal play screen](assets/images/new/welcome-screen.png)
 - **Random Ship Placement:** Once the player makes their initial choice, the boards are generated. Each board is randomly generated, one for the player and one for the enemy. (Here, the player chose to see the enemy ship placement).
-
  ![Ship placement](assets/images/new/ship-placement.png)
 - **Turn-based Gameplay:** The player is then prompted to make a guess and fire upon the enemy ships. The player can guess any two numbers between 1 and 5 to target. These coordinates are marked on the top and left side of each board.
-
  ![Player turns](assets/images/new/after-guess.png)
 - **Victory Message:** Once there is a winner, be it the player or the enemy, there is a win or lose screen. (Here the player won) This is then followed by a question if the player would like to continue playing with another game or quite playing, (y/n).
-
  ![Victory message](assets/images/new/victory-message.png)
 - **Colorama:** Throughout the player will experience a bit more than the normal black and white terminal text with colors imported with colorama. This adds some variation to text and not only adds to the interesting factor but also increases contrast of important messages and clarifies positive or negative results.
 
@@ -89,8 +86,7 @@ False input testing for all game inputs:
 ### Validator
 The code has been validated using the following tools:
 - **PEP8:** Ensuring Python code style guidelines are met.
-
-![PEP8 verification](assets/images/new/testing-image.png)
+   ![PEP8 verification](assets/images/new/testing-image.png)
 
 - **Heroku Validator:** Ensuring the application is correctly deployed and running on Heroku.
  - The game runs, fully deployed without error on the [Heroku server.](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
