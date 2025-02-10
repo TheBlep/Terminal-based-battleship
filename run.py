@@ -1,5 +1,10 @@
+# Import math random (For generating random numbers)
 import random
+# Import operating system interaction (For clearing terminal)
 import os
+# Import colorma module (For terminal colors)
+from colorama import init, Fore, Back, Style
+
 # Welcome to another battleship game!
 # This is a simple terminal based game based on the two tutorials:
 # https://llego.dev/posts/how-code-simple-battleship-game-python/
@@ -16,7 +21,7 @@ def create_board(size):
 def print_board(board):
     """Prints the board in the terminal"""
     i = 1
-    print(' ', 1, 2, 3, 4, 5)
+    print(' ', "1", "2", "3", "4", "5")
     for row in board:
 
         print(i, ' '.join(row))
@@ -47,8 +52,8 @@ def get_user_guess(board):
             os.system('cls' if os.name == 'nt' else 'clear')
             return int(guess[0])-1, int(guess[1])-1
         else:
-            print("Invalid input")
-            print("Please enter two numbers separated by a space.")
+            print(Fore.RED + "Invalid input")
+            print(Style.RESET_ALL + "Please enter two numbers separated by a space.")
 
 
 def get_enemy_guess(board):
@@ -62,7 +67,7 @@ def setup_game(board_size, num_ships, showenemy):
     player_board = create_board(board_size)
     enemy_board = create_board(board_size)
 
-    print("Your ships have been placed:")
+    print(Style.RESET_ALL + "Your ships have been placed:")
     place_ships(player_board, num_ships)
     print_board(player_board)
 
@@ -78,6 +83,9 @@ def setup_game(board_size, num_ships, showenemy):
 
 def play_game():
     """The main game run function"""
+    # Used to clear terminal on most devices.
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     print("Welcome to Battleship! A game of pure luck... Good luck!")
     print("Your goal is to sink all of your opponent's fleet of ships") 
     print("before they sink yours!")
@@ -95,19 +103,19 @@ def play_game():
     answer = False
     showenemy = False
     while answer is False:
-        show = input("Would you like to see the enemy ship locations? \
-                    [Used for testing] y/n")
+        show = input(Fore.YELLOW + "Would you like to see the enemy ship locations? \
+            [Used for testing] y/n")
         if show is "y":
             os.system('cls' if os.name == 'nt' else 'clear')
             showenemy = True
-            print("Please note the enemy ship placements before proceeding!")
+            print(Fore.RED + "Please note the enemy ship placements before proceeding!")
             break
         elif show == "n":
             break
         else:
             os.system('cls' if os.name == 'nt' else 'clear')
-            print("Invalid input")
-            print("Please enter a 'y' or an 'n'.")
+            print(Fore.RED + "Invalid input")
+            print(Style.RESET_ALL + "Please enter a 'y' or an 'n'.")
 
     board_size = 5
     num_ships = 3
@@ -123,41 +131,43 @@ def play_game():
     
     while player_ships > 0 and enemy_ships > 0:
         if turn % 2 is 0:
+
             # Could be made into a seperate function
             # Player and enemy input respectivly
-            print("Your turn")
+
+            print(Style.RESET_ALL + "Your turn!")
             print_board(player_guesses)
             guess = get_user_guess(board_size)
             if enemy_board[guess[0]][guess[1]] == 'S':
-                print("You hit!")
+                print(Fore.RED + "You hit!")
                 player_guesses[guess[0]][guess[1]] = 'X'
                 enemy_board[guess[0]][guess[1]] = 'X'
                 enemy_ships -= 1
             else:
-                print("You missed.")
+                print(Fore.RED + "You missed.")
                 print("---")
                 player_guesses[guess[0]][guess[1]] = 'O'
         else:
             # Computer "Enemy" input
-            print("Enemys turn")
+            print(Style.RESET_ALL + "Enemys turn")
             print_board(enemy_guesses)
             guess = get_enemy_guess(board_size)
             if player_board[guess[0]][guess[1]] == 'S':
-                print("Enemy has hit you!")
+                print(Fore.RED + "Enemy has hit you!")
                 enemy_guesses[guess[0]][guess[1]] = 'X'
                 player_board[guess[0]][guess[1]] = 'X'
                 player_ships -= 1
             else:
-                print("Enemy Missed!")
+                print(Style.RESET_ALL + "Enemy Missed!")
                 print("---")
                 enemy_guesses[guess[0]][guess[1]] = 'O'
 
         turn += 1
     # Decides endgame message based on who won
     if player_ships is 0:
-        print("Enemy wins!")
+        print(Fore-RED + "Enemy wins!")
     else:
-        print("Congrats! you have sank all the enemy ships.")
+        print(Fore.GREEN + "Congrats! you have sank all the enemy ships!")
     
 
 """Main game loop"""
@@ -166,14 +176,14 @@ if __name__ == "__main__":
     play_game()
 
     while True:  # Validate user input
-        answer = input('Would you like to play again? (y/n): ')
+        answer = input(Style.RESET_ALL + 'Would you like to play again? (y/n): ')
         if answer in ('y', 'n'):
             break
-        print("invalid input.")
+        print(Fore.RED + "invalid input.")
 
     if answer == 'y':
         continue
     else:
-        print("Goodbye")
+        print(Style.RESET_ALL + "Goodbye")
         print(chr(27) + "[2J")
         break
