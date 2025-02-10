@@ -104,7 +104,9 @@ def play_game():
         elif show == "n":
             break
         else:
-            answer = False
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print("Invalid input")
+            print("Please enter a 'y' or an 'n'.")
 
     board_size = 5
     num_ships = 3
