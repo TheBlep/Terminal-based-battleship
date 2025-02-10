@@ -46,8 +46,9 @@ def place_ships(board, num_ships):
 def get_user_guess(board):
     """User input and input validator"""
     while True:
-        guess = input(\
-            "Enter your guess (row and column, e.g., 2 3 or 'q' to quite): ").split()
+        guess = input(
+            "Enter your guess \
+            (row and column, e.g., 2 3 or 'q' to quite): ").split()
         print()
         if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() \
                 and int(guess[0]) < (board+1) and int(guess[1]) < (board+1) \
@@ -60,8 +61,8 @@ def get_user_guess(board):
             break
         else:
             print(Fore.RED + "Invalid input")
-            print(Style.RESET_ALL + \
-                "Please enter two numbers separated by a space.")
+            print(Style.RESET_ALL +
+                  "Please enter two numbers separated by a space.")
 
 
 def get_enemy_guess(board):
@@ -109,9 +110,9 @@ def play_game():
     answer = False
     showenemy = False
     while answer is False:
-        show = input(Fore.YELLOW + \
-            "Would you like to see the enemy ship locations? \
-                [Used for testing] y/n")
+        show = input(Fore.YELLOW +
+                     "Would you like to see the enemy ship locations? \
+                     [Used for testing] y/n")
         if show is "y":
             os.system('cls' if os.name == 'nt' else 'clear')
             showenemy = True
@@ -207,7 +208,8 @@ if __name__ == "__main__":
         play_game()
 
         while True:  # Validate user input
-            answer = input(Style.RESET_ALL + 'Would you like to play again? (y/n): ')
+            answer = input(Style.RESET_ALL +
+                           'Would you like to play again? (y/n): ')
             if answer in ('y', 'n'):
                 break
             print(Fore.RED + "invalid input.")
