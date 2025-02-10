@@ -73,7 +73,7 @@ def setup_game(board_size, num_ships, showenemy):
     print("---")
     place_ships(enemy_board, num_ships)
 
-    if showenemy == True:
+    if showenemy is True:
         print_board(enemy_board)
 
     return player_board, enemy_board
@@ -82,17 +82,26 @@ def setup_game(board_size, num_ships, showenemy):
 
 
 def play_game():
-    print("Welcome to Battleship! A game of pure luck... Good luck")
+    print("Welcome to Battleship! A game of pure luck... Good luck!")
+    print("Your goal is to sink all of your opponent's fleet of ships") 
+    print("before they sink yours!")
+    print("Each player takes turns guessing the coordinates of the opponent's ships.")
+    print("in this version, you are playing against a computer that will do its")
+    print(" very best to destroy you and it is up to you to destroy it first!")
+    print("The first player to sink all of the opponent's ships wins.")
     print("'~' are unknown playing fields, 'O' are guessed and missed field")
     print("and 'X' are guessed and hit fields!")
+    
+
 
     # Question if you wish to see the location of enemy ships or not
     # (Used for testing)
     answer = False
     showenemy = False
-    while answer == False:
-        show = input("See the enemy ship locations?[Used for testing] y/n")
-        if show == "y":
+    while answer is False:
+        show = input("Woudl you like to see the enemy ship locations? \
+                    [Used for testing] y/n")
+        if show is "y":
             showenemy = True
             break
         elif show == "n":
@@ -111,7 +120,7 @@ def play_game():
     turn = 0
 
     while player_ships > 0 and enemy_ships > 0:
-        if turn % 2 == 0:
+        if turn % 2 is 0:
             print("Your turn")
             print_board(player_guesses)
             guess = get_user_guess(board_size)
@@ -140,11 +149,13 @@ def play_game():
 
         turn += 1
 
-    if player_ships == 0:
+    if player_ships is 0:
         print("Enemy wins!")
     else:
-        print("You win!")
+        print("Congrats! you have sank all the enemy ships. \
+             To play again, refresh the terminal of press 'q'")
+    
 
 
-if __name__ == "__main__":
+if __name__ is "__main__":
     play_game()

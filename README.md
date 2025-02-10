@@ -87,7 +87,7 @@ The game was deployed using the Heroku app hosting service:
     - Another option is to use the active Heroku deplyoment [here](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
 - Local deployment
     - Fork or clone the [respository](https://github.com/TheBlep/Terminal-based-battleship)
-    - Open open the file in your favorate IDE
+    - Open the file in your favorate IDE
     - Run the run.py in a python terminal
     - Enjoy!
 
