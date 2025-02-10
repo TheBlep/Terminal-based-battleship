@@ -48,11 +48,22 @@ To play the game:
 - **Different size ships** Adding different size ships to allow variation and add a bit more stratagy to the game.
 - **Player ship placement** Allow the player to decide their ship placement and orentation (assuming different size ships).
 
+
 ## Data Model
 The data model for Battleship includes:
 - **Grids:** A 10x10 grid representing the game board; "~" representing unknown waters, "S" representing ships, "X" representing hit marks, "O" representing guessed and missed marks.
 - **Guesses:** Each time the player or computer guesses, the grid is updated ot show this change and its result.
+
 ## Testing
+
+False input testing for all game inputs:
+- A letter (not the one requested) "a"
+- Multiple letters "abc"
+- A single number "1"
+- Multiple numbers "123"
+- An empty ENTER with no input
+- Only spaces          
+- Special characters ? ! @ etc
 
 ### Bugs
 
@@ -61,6 +72,8 @@ The data model for Battleship includes:
     - **Solution:** Added input validation to handle incorrect inputs.
 - **Bug:** shortening of long lines caused breakage.
     - **Solution:** Added correct syntax "\" to lines to fix the problem.
+- **Bug:** the input of 0 0 was possible due to no lower limit.
+    - **Solution:** Added check that input is greated than 0.
 
 #### Remaining Bugs
 - **Bug:** Player and computer are able to guess a single tile more than once, 
