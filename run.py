@@ -21,7 +21,7 @@ def create_board(size):
 def print_board(board):
     """Prints the board in the terminal"""
     i = 1
-    print(' ', "1", "2", "3", "4", "5")
+    print(Style.RESET_ALL + ' ', "1", "2", "3", "4", "5")
     for row in board:
 
         print(i, ' '.join(row))
@@ -72,7 +72,6 @@ def setup_game(board_size, num_ships, showenemy):
     print_board(player_board)
 
     print("The enemy has placed their ships:")
-    print("---")
     place_ships(enemy_board, num_ships)
 
     if showenemy is True:
@@ -135,7 +134,9 @@ def play_game():
             # Could be made into a seperate function
             # Player and enemy input respectivly
 
-            print(Style.RESET_ALL + "Your turn!")
+            print(Fore.GREEN + "Your turn!")
+            print(' ')
+            print(Style.RESET_ALL + "Your guesses so far...")
             print_board(player_guesses)
             guess = get_user_guess(board_size)
             if enemy_board[guess[0]][guess[1]] == 'S':
@@ -149,7 +150,9 @@ def play_game():
                 player_guesses[guess[0]][guess[1]] = 'O'
         else:
             # Computer "Enemy" input
-            print(Style.RESET_ALL + "Enemys turn")
+            print(Fore.RED + "Enemys turn")
+            print(' ')
+            print(Style.RESET_ALL + "Enemy guesses so far...")
             print_board(enemy_guesses)
             guess = get_enemy_guess(board_size)
             if player_board[guess[0]][guess[1]] == 'S':
