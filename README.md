@@ -93,7 +93,7 @@ The code has been validated using the following tools:
 ![PEP8 verification](assets/images/new/testing-image.png)
 
 - **Heroku Validator:** Ensuring the application is correctly deployed and running on Heroku.
-    - The game runs, fully deplyoed without error on the [Heroku server.](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
+    - The game runs, fully deployed without error on the [Heroku server.](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
 
 ## Deployment
 The game was deployed using the Heroku app hosting service:
