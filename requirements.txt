@@ -145,4 +145,3 @@ wheel==0.45.0
 wrapt==1.16.0
 wxPython==4.2.2
 zstandard==0.23.0
-colorama
