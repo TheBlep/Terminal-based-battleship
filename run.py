@@ -4,6 +4,8 @@ import random
 import os
 # Import colorma module (For terminal colors)
 from colorama import init, Fore, Back, Style
+# For direct program termination
+import sys
 
 # Welcome to another battleship game!
 # This is a simple terminal based game based on the two tutorials:
@@ -43,7 +45,7 @@ def place_ships(board, num_ships):
 def get_user_guess(board):
     """User input and input validator"""
     while True:
-        guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
+        guess = input("Enter your guess (row and column, e.g., 2 3 or 'q' to quite): ").split()
         print()
         if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() \
                 and int(guess[0]) < (board+1) and int(guess[1]) < (board+1) \
@@ -51,6 +53,9 @@ def get_user_guess(board):
             # Used to clear terminal on most devices.
             os.system('cls' if os.name == 'nt' else 'clear')
             return int(guess[0])-1, int(guess[1])-1
+        elif len(guess) == 1 and guess[0] == "q":
+            sys.exit()
+            break
         else:
             print(Fore.RED + "Invalid input")
             print(Style.RESET_ALL + "Please enter two numbers separated by a space.")
