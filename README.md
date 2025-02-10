@@ -40,6 +40,7 @@ To play the game:
 - **Victory Message:** The game announces the winner when all ships of one player are sunk.
 
   ![Victory message](assets/images/victory.png)
+  - **Colorama:** Throughout the player will experiance a bit more than the normal black and white termainl text with colors inported with colorama. This adds some variation to text and not only adds ot the interesting factor but also increases contrast of important messages and clarifies positive or negative results.
 
 ### Future Features
 - **Multiplayer Mode:** Allowing two players to play remotely.
@@ -47,6 +48,8 @@ To play the game:
 - **Graphical Interface:** Adding a GUI for a more engaging experience.
 - **Different size ships** Adding different size ships to allow variation and add a bit more stratagy to the game.
 - **Player ship placement** Allow the player to decide their ship placement and orentation (assuming different size ships).
+- **Restart game from play screen** Allow the player to restart the game, for exaimple by pressing r instead of giving a
+
 
 
 ## Data Model
