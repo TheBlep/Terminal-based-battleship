@@ -70,42 +70,42 @@ False input testing for all game inputs:
 
 #### Solved Bugs
 - **Bug:** Game crash when inputting invalid coordinates.
- - **Solution:** Added input validation to handle incorrect inputs.
+  - **Solution:** Added input validation to handle incorrect inputs.
 - **Bug:** Shortening of long lines caused breakage.
- - **Solution:** Added correct syntax "\" to lines to fix the problem.
+  - **Solution:** Added correct syntax "\" to lines to fix the problem.
 - **Bug:** The input of 0 0 was possible due to no lower limit.
- - **Solution:** Added check that input is greater than 0.
+  - **Solution:** Added check that input is greater than 0.
 
 #### Remaining Bugs
 - **Bug:** Player and computer are able to guess a single tile more than once, 
  wasting a turn.  
- - **Status:** This could be solved with a tracker function, preventing duplicate inputs for a single game.
+  - **Status:** This could be solved with a tracker function, preventing duplicate inputs for a single game.
 - **Bug:** Syntax warning regarding the correct use of == or "is".
- - **Status:** The given CI Python linter suggested the correct use is replacing == with "is" and in the end this was the one the final submission is based on. However on compilation, there are complaints that the "is" should be reverted to ==. There seems to be a confusion in which syntax is better used, with each having a different opinion on correct syntax. Game function is unaffected.
+  - **Status:** The given CI Python linter suggested the correct use is replacing == with "is" and in the end this was the one the final submission is based on. However on compilation, there are complaints that the "is" should be reverted to ==. There seems to be a confusion in which syntax is better used, with each having a different opinion on correct syntax. Game function is unaffected.
 
 ### Validator
 The code has been validated using the following tools:
 - **PEP8:** Ensuring Python code style guidelines are met.
-   ![PEP8 verification](assets/images/new/testing-image.png)
+  ![PEP8 verification](assets/images/new/testing-image.png)
 
 - **Heroku Validator:** Ensuring the application is correctly deployed and running on Heroku.
- - The game runs, fully deployed without error on the [Heroku server.](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
+  - The game runs, fully deployed without error on the [Heroku server.](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
 
 ## Deployment
 The game was deployed using the Heroku app hosting service:
 - Steps for deployment
- - Fork or clone the [repository](https://github.com/TheBlep/Terminal-based-battleship)
- - Create a new Heroku app
- - Set the build packs (under settings) to 'Python' and 'Node.js'. Where Python is **above** Node.js
- - Link the Heroku app to the repository
- - Click on **Deploy**
+  - Fork or clone the [repository](https://github.com/TheBlep/Terminal-based-battleship)
+  - Create a new Heroku app
+  - Set the build packs (under settings) to 'Python' and 'Node.js'. Where Python is **above** Node.js
+  - Link the Heroku app to the repository
+  - Click on **Deploy**
 - Active deployment
- - Another option is to use the active Heroku deployment [here](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
+  - Another option is to use the active Heroku deployment [here](https://terminal-based-battleship-ad2683f69f33.herokuapp.com/)
 - Local deployment
- - Fork or clone the [repository](https://github.com/TheBlep/Terminal-based-battleship)
- - Open the file in your favorite IDE
- - Run the run.py in a python terminal
- - Enjoy!
+  - Fork or clone the [repository](https://github.com/TheBlep/Terminal-based-battleship)
+  - Open the file in your favorite IDE
+  - Run the run.py in a python terminal
+  - Enjoy!
 
 ## Credits
 - **Developer:** TheBlep
