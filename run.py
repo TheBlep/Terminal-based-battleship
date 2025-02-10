@@ -6,18 +6,15 @@ import os
 # and
 # https://www.pyshine.com/Make-a-battleship-game/
 
-# BATTLESHIP
-
-# Creates the game board
-
+# BATTLESHIP!
 
 def create_board(size):
+    """Creates the game board"""
     return [['~'] * size for _ in range(size)]
 
 
-# Prints the board in the terminal
-
 def print_board(board):
+    """Prints the board in the terminal"""
     i = 1
     print(' ', 1, 2, 3, 4, 5)
     for row in board:
@@ -26,44 +23,41 @@ def print_board(board):
         i = i + 1
     print()
 
-# Ship placement based on randomization
-
 
 def place_ships(board, num_ships):
+    """Ship placement based on randomization"""
     ships = 0
     while ships < num_ships:
         x, y = random.randint(0, len(board) - 1), \
             random.randint(0, len(board) - 1)
         if board[x][y] == '~':
             board[x][y] = 'S'
-            ships += 1
+            ships += 1 
 
-
-# User input and input validator
 
 def get_user_guess(board):
+    """User input and input validator"""
     while True:
         guess = input("Enter your guess (row and column, e.g., 2 3): ").split()
         print()
         if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() \
                 and int(guess[0]) < (board+1) and int(guess[1]) < (board+1):
+            # Used to clear terminal on most devices.
             os.system('cls' if os.name == 'nt' else 'clear')
             return int(guess[0])-1, int(guess[1])-1
         else:
             print("Invalid input")
             print("Please enter two numbers separated by a space.")
 
-# Enemy move based on randomizaton
-
 
 def get_enemy_guess(board):
+    """Enemy move based on randomizaton"""
     guess = random.randint(0, board - 1), random.randint(0, board - 1)
     return int(guess[0]), int(guess[1])
 
-# Sets up the players and enemy boards for the game
-
 
 def setup_game(board_size, num_ships, showenemy):
+    """Sets up the players and enemy boards for the game"""
     player_board = create_board(board_size)
     enemy_board = create_board(board_size)
 
@@ -80,10 +74,9 @@ def setup_game(board_size, num_ships, showenemy):
 
     return player_board, enemy_board
 
-# The main game run function
-
 
 def play_game():
+    """The main game run function"""
     print("Welcome to Battleship! A game of pure luck... Good luck!")
     print("Your goal is to sink all of your opponent's fleet of ships") 
     print("before they sink yours!")
@@ -123,8 +116,12 @@ def play_game():
     enemy_ships = num_ships
     turn = 0
 
+    # Request, verify, print and save turn input
+    
     while player_ships > 0 and enemy_ships > 0:
         if turn % 2 is 0:
+            # Could be made into a seperate function
+            # Player and enemy input respectivly
             print("Your turn")
             print_board(player_guesses)
             guess = get_user_guess(board_size)
@@ -138,6 +135,7 @@ def play_game():
                 print("---")
                 player_guesses[guess[0]][guess[1]] = 'O'
         else:
+            # Computer "Enemy" input
             print("Enemys turn")
             print_board(enemy_guesses)
             guess = get_enemy_guess(board_size)
@@ -152,14 +150,14 @@ def play_game():
                 enemy_guesses[guess[0]][guess[1]] = 'O'
 
         turn += 1
-
+    # Decides endgame message based on who won
     if player_ships is 0:
         print("Enemy wins!")
     else:
         print("Congrats! you have sank all the enemy ships.")
     
 
-
+"""Main game loop"""
 if __name__ == "__main__":
    while True:  # Re-run program
     play_game()
