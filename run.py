@@ -1,4 +1,5 @@
 import random
+import os
 # Welcome to another battleship game!
 # This is a simple terminal based game based on the two tutorials:
 # https://llego.dev/posts/how-code-simple-battleship-game-python/
@@ -46,6 +47,7 @@ def get_user_guess(board):
         print()
         if len(guess) == 2 and guess[0].isdigit() and guess[1].isdigit() \
                 and int(guess[0]) < (board+1) and int(guess[1]) < (board+1):
+            os.system('cls' if os.name == 'nt' else 'clear')
             return int(guess[0])-1, int(guess[1])-1
         else:
             print("Invalid input")
@@ -87,7 +89,7 @@ def play_game():
     print("before they sink yours!")
     print("Each player takes turns guessing the coordinates of the opponent's ships.")
     print("in this version, you are playing against a computer that will do its")
-    print(" very best to destroy you and it is up to you to destroy it first!")
+    print("very best to destroy you and it is up to you to destroy it first!")
     print("The first player to sink all of the opponent's ships wins.")
     print("'~' are unknown playing fields, 'O' are guessed and missed field")
     print("and 'X' are guessed and hit fields!")
@@ -99,10 +101,12 @@ def play_game():
     answer = False
     showenemy = False
     while answer is False:
-        show = input("Woudl you like to see the enemy ship locations? \
+        show = input("Would you like to see the enemy ship locations? \
                     [Used for testing] y/n")
         if show is "y":
+            os.system('cls' if os.name == 'nt' else 'clear')
             showenemy = True
+            print("Please note the enemy ship placements before proceeding!")
             break
         elif show == "n":
             break
@@ -152,10 +156,23 @@ def play_game():
     if player_ships is 0:
         print("Enemy wins!")
     else:
-        print("Congrats! you have sank all the enemy ships. \
-             To play again, refresh the terminal of press 'q'")
+        print("Congrats! you have sank all the enemy ships.")
     
 
 
-if __name__ is "__main__":
+if __name__ == "__main__":
+   while True:  # Re-run program
     play_game()
+
+    while True:  # Validate user input
+        answer = input('Would you like to play again? (y/n): ')
+        if answer in ('y', 'n'):
+            break
+        print("invalid input.")
+
+    if answer == 'y':
+        continue
+    else:
+        print("Goodbye")
+        print(chr(27) + "[2J")
+        break
